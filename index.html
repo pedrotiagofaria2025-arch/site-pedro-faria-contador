@@ -7,8 +7,8 @@
     <title>Contador em Goiânia - Pedro Faria | Contabilidade 100% Online</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Contador autônomo em Goiânia com atendimento 100% online. Serviços de contabilidade, assessoria fiscal, departamento pessoal e consultoria empresarial personalizada." />
-    <meta name="keywords" content="contador goiânia, contabilidade online, contador autônomo, assessoria fiscal goiás, departamento pessoal, planejamento tributário, consultoria empresarial, abertura de empresas goiânia" />
+    <meta name="description" content="Contador autônomo em Goiânia, Goiás, com atendimento 100% online. Contabilidade digital, assessoria fiscal, planejamento tributário, departamento pessoal e abertura de empresas. Primeira consulta gratuita!" />
+    <meta name="keywords" content="contador goiânia, contabilidade online, contador autônomo, assessoria fiscal goiás, departamento pessoal, planejamento tributário, consultoria empresarial, abertura de empresas goiânia, contador em goiás, contabilidade digital goiânia, serviços contábeis goiás" />
     <meta name="author" content="Pedro Faria - Contador Autônomo" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="pt-BR" />
@@ -45,13 +45,20 @@
     }
     </script>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M12DDELPEX"></script>
+    <!-- Google Analytics (Carregamento Diferido) -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-M12DDELPEX');
+      
+      // Carregar Google Analytics após o carregamento da página
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-M12DDELPEX';
+        document.head.appendChild(script);
+      });
     </script>
     
     <!-- Meta Tags Adicionais -->

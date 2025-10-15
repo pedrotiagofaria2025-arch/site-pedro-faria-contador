@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
-import { Calculator, FileText, TrendingUp, Users, Mail, Phone, MapPin, Clock, CheckCircle, Menu, X, Facebook, Instagram, Linkedin, Twitter, BookOpen, ArrowRight, Award, Target, Cookie } from 'lucide-react'
+import { Calculator, FileText, TrendingUp, Users, Mail, Phone, MapPin, Clock, CheckCircle, Menu, X, Facebook, Instagram, Linkedin, Twitter, BookOpen, ArrowRight, Award, Target, Cookie, HelpCircle, ChevronDown } from 'lucide-react'
 import heroImage from './assets/hero.jpg'
 import officeImage from './assets/office.jpg'
 import { blogPosts } from './blogData.js'
@@ -18,6 +18,7 @@ function App() {
     message: '',
     privacyAccepted: false
   })
+  const [expandedFaq, setExpandedFaq] = useState(null)
 
   // Verificar se o usuário já aceitou os cookies
   useEffect(() => {
@@ -184,6 +185,9 @@ function App() {
               <button onClick={() => scrollToSection('blog')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
                 Blog
               </button>
+              <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+                FAQ
+              </button>
               <button onClick={() => scrollToSection('contato')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
                 Contato
               </button>
@@ -216,6 +220,9 @@ function App() {
               <button onClick={() => scrollToSection('blog')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium text-left">
                 Blog
               </button>
+              <button onClick={() => scrollToSection('faq')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium text-left">
+                FAQ
+              </button>
               <button onClick={() => scrollToSection('contato')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium text-left">
                 Contato
               </button>
@@ -237,6 +244,10 @@ function App() {
                 Cuido da contabilidade da sua empresa com dedicação e expertise, garantindo 
                 tranquilidade e conformidade fiscal.
               </p>
+              <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
+                <p className="text-blue-900 font-semibold">✨ Primeira consulta gratuita para análise da situação fiscal da sua empresa!
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button onClick={() => scrollToSection('contato')} size="lg" className="bg-blue-600 hover:bg-blue-700 text-lg px-8">
                   Fale Comigo
@@ -332,6 +343,7 @@ function App() {
                 <CardDescription>
                   Escrituração contábil completa, balanços patrimoniais, demonstrativos de resultados (DRE), 
                   fluxo de caixa e relatórios gerenciais personalizados para tomada de decisões estratégicas.
+                  <span className="block mt-2 text-sm italic text-gray-500">Exemplo: Ajudei uma loja de comércio eletrônico a identificar custos ocultos que estavam reduzindo a margem de lucro em 15%.</span>
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -365,6 +377,7 @@ function App() {
                 <CardDescription>
                   Análise financeira detalhada, planejamento estratégico, gestão de custos, 
                   orientação para crescimento sustentável e melhoria de processos internos.
+                  <span className="block mt-2 text-sm italic text-gray-500">Exemplo: Orientei um prestador de serviços a reestruturar preços, resultando em aumento de 25% na rentabilidade.</span>
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -387,6 +400,7 @@ function App() {
                 <CardDescription>
                   Análise e otimização da carga tributária de forma legal e estratégica, 
                   escolha do melhor regime tributário e identificação de oportunidades de economia fiscal.
+                  <span className="block mt-2 text-sm italic text-gray-500">Exemplo: Realizei migração de regime tributário para um cliente, gerando economia anual de R$ 18 mil em impostos.</span>
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -490,8 +504,139 @@ function App() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-16 md:py-24 bg-gray-50">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Perguntas Frequentes
+            </h2>
+            <p className="text-lg text-gray-600">
+              Tire suas dúvidas sobre os serviços de contabilidade
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === 0 ? null : 0)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="font-semibold text-gray-900">Como funciona o atendimento 100% online?</span>
+                </div>
+                <ChevronDown className={`h-5 w-5 text-gray-500 transition-transform ${expandedFaq === 0 ? 'rotate-180' : ''}`} />
+              </button>
+              {expandedFaq === 0 && (
+                <div className="px-6 pb-4 text-gray-600">
+                  <p>Todo o atendimento é realizado de forma digital, por WhatsApp, e-mail ou videochamada. Você envia os documentos necessários de forma eletrônica e eu cuido de toda a parte contábil, fiscal e trabalhista do seu negócio remotamente. Isso proporciona mais agilidade, economia de tempo e custos reduzidos.</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === 1 ? null : 1)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="font-semibold text-gray-900">Quais documentos preciso para abrir uma empresa?</span>
+                </div>
+                <ChevronDown className={`h-5 w-5 text-gray-500 transition-transform ${expandedFaq === 1 ? 'rotate-180' : ''}`} />
+              </button>
+              {expandedFaq === 1 && (
+                <div className="px-6 pb-4 text-gray-600">
+                  <p>Para abertura de empresa, você precisará de: RG e CPF dos sócios, comprovante de residência, certidão de casamento (se aplicável), contrato de locação ou escritura do imóvel onde a empresa funcionará, e definição da atividade econômica. Eu auxilio em todo o processo e oriento sobre cada etapa.</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === 2 ? null : 2)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="font-semibold text-gray-900">Qual a diferença entre MEI, ME e EIRELI?</span>
+                </div>
+                <ChevronDown className={`h-5 w-5 text-gray-500 transition-transform ${expandedFaq === 2 ? 'rotate-180' : ''}`} />
+              </button>
+              {expandedFaq === 2 && (
+                <div className="px-6 pb-4 text-gray-600">
+                  <p><strong>MEI (Microempreendedor Individual):</strong> Faturamento até R$ 81 mil/ano, tributação simplificada. <strong>ME (Microempresa):</strong> Faturamento até R$ 360 mil/ano, pode ter sócios. <strong>EIRELI:</strong> Empresa individual de responsabilidade limitada, exige capital social mínimo. Cada tipo tem vantagens específicas dependendo do seu negócio.</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === 3 ? null : 3)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="font-semibold text-gray-900">Como é feito o planejamento tributário?</span>
+                </div>
+                <ChevronDown className={`h-5 w-5 text-gray-500 transition-transform ${expandedFaq === 3 ? 'rotate-180' : ''}`} />
+              </button>
+              {expandedFaq === 3 && (
+                <div className="px-6 pb-4 text-gray-600">
+                  <p>Analiso detalhadamente o faturamento, despesas e atividades da sua empresa para identificar o regime tributário mais vantajoso (Simples Nacional, Lucro Presumido ou Lucro Real). O objetivo é reduzir legalmente a carga tributária e maximizar a lucratividade do seu negócio.</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === 4 ? null : 4)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="font-semibold text-gray-900">Quanto tempo leva para abrir uma empresa?</span>
+                </div>
+                <ChevronDown className={`h-5 w-5 text-gray-500 transition-transform ${expandedFaq === 4 ? 'rotate-180' : ''}`} />
+              </button>
+              {expandedFaq === 4 && (
+                <div className="px-6 pb-4 text-gray-600">
+                  <p>O prazo médio é de 5 a 15 dias úteis, dependendo do tipo de empresa e da agilidade dos órgãos públicos (Junta Comercial, Receita Federal, Prefeitura). Trabalho para agilizar ao máximo todo o processo e manter você informado em cada etapa.</p>
+                </div>
+              )}
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+              <button
+                onClick={() => setExpandedFaq(expandedFaq === 5 ? null : 5)}
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+              >
+                <div className="flex items-center gap-3">
+                  <HelpCircle className="h-5 w-5 text-blue-600 flex-shrink-0" />
+                  <span className="font-semibold text-gray-900">Você atende empresas de todo o Brasil?</span>
+                </div>
+                <ChevronDown className={`h-5 w-5 text-gray-500 transition-transform ${expandedFaq === 5 ? 'rotate-180' : ''}`} />
+              </button>
+              {expandedFaq === 5 && (
+                <div className="px-6 pb-4 text-gray-600">
+                  <p>Sim! Como o atendimento é 100% online, posso atender empresas de qualquer lugar do Brasil. Tenho experiência com legislações de diversos estados e municípios, garantindo conformidade fiscal independentemente da sua localização.</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-gray-600 mb-4">Não encontrou a resposta que procurava?</p>
+            <Button onClick={() => scrollToSection('contato')} className="bg-blue-600 hover:bg-blue-700">
+              Entre em Contato
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Política de Privacidade Section */}
-      <section id="privacidade" className="py-16 md:py-24 bg-gray-50">
+      <section id="privacidade" className="py-16 md:py-24">
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
             Política de Privacidade
@@ -591,7 +736,7 @@ function App() {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">WhatsApp</h3>
-                  <p className="text-gray-600">(62) 99994-8445</p>
+                  <a href="tel:+5562999948445" className="text-blue-600 hover:text-blue-700 hover:underline">(62) 99994-8445</a>
                 </div>
               </div>
 
@@ -601,7 +746,7 @@ function App() {
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-1">E-mail</h3>
-                  <p className="text-gray-600">pedrotiagofaria25@gmail.com</p>
+                  <a href="mailto:pedrotiagofaria25@gmail.com" className="text-blue-600 hover:text-blue-700 hover:underline">pedrotiagofaria25@gmail.com</a>
                 </div>
               </div>
 
@@ -787,8 +932,8 @@ function App() {
             <div>
               <h3 className="font-semibold text-lg mb-4">Contato</h3>
               <ul className="space-y-2 text-gray-400">
-                <li>(62) 99994-8445</li>
-                <li>pedrotiagofaria25@gmail.com</li>
+                <li><a href="tel:+5562999948445" className="hover:text-white transition-colors">(62) 99994-8445</a></li>
+                <li><a href="mailto:pedrotiagofaria25@gmail.com" className="hover:text-white transition-colors">pedrotiagofaria25@gmail.com</a></li>
                 <li>Goiânia, GO</li>
               </ul>
             </div>
